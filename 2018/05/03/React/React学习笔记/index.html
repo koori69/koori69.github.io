@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN,ja,default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="React,Flux,Redux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="十六夜のブログ" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="JSXJavaScript的语法扩展 在JS中编写HTML一样的代码，JSX中使用的‘元素’不局限与HTML中的元素，可以是任何一个React组件。React判断一个元素是HTML元素还是React组件的原则是看第一个字母是否大写。 JSX的onClick事件处理方式和HTML的onclick不同。  HTML的onclick处理方式 onclick添加的事件处理函数是在全局环境下执行的，会污染全">
+<meta name="keywords" content="React,Flux,Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/React/React学习笔记/index.html">
+<meta property="og:site_name" content="十六夜のブログ">
+<meta property="og:description" content="JSXJavaScript的语法扩展 在JS中编写HTML一样的代码，JSX中使用的‘元素’不局限与HTML中的元素，可以是任何一个React组件。React判断一个元素是HTML元素还是React组件的原则是看第一个字母是否大写。 JSX的onClick事件处理方式和HTML的onclick不同。  HTML的onclick处理方式 onclick添加的事件处理函数是在全局环境下执行的，会污染全">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-03T15:05:52.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React学习笔记">
+<meta name="twitter:description" content="JSXJavaScript的语法扩展 在JS中编写HTML一样的代码，JSX中使用的‘元素’不局限与HTML中的元素，可以是任何一个React组件。React判断一个元素是HTML元素还是React组件的原则是看第一个字母是否大写。 JSX的onClick事件处理方式和HTML的onclick不同。  HTML的onclick处理方式 onclick添加的事件处理函数是在全局环境下执行的，会污染全">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/03/React/React学习笔记/">
+
+
+
+
+
+  <title>React学习笔记 | 十六夜のブログ</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/koori69" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">十六夜のブログ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/React/React学习笔记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kris Jyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十六夜のブログ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T23:03:48+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-03T23:05:52+08:00">
+                2018-05-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p>JavaScript的语法扩展</p>
+<p>在JS中编写HTML一样的代码，JSX中使用的‘元素’不局限与HTML中的元素，可以是任何一个React组件。React判断一个元素是HTML元素还是React组件的原则是看第一个字母是否大写。</p>
+<p>JSX的onClick事件处理方式和HTML的onclick不同。</p>
+<ul>
+<li><p>HTML的onclick处理方式</p>
+<p>onclick添加的事件处理函数是在全局环境下执行的，会污染全局环境，容易产生意料不到的后果</p>
+<p>过多的onclick事件，可能会影响网页的性能</p>
+<p>需要动态删除使用onclick的DOM元素时，需要把对应的时间处理器注销。如果忘记注销，会造成内存泄漏。</p>
+</li>
+<li><p>JSX的onClick处理方式</p>
+<p>不产生直接使用onclick的HTML，而是使用事件委托的方式处理点击时间。</p>
+<p>在最顶层的DOM节点上，添加一个事件处理函数。点击的事件都被该处理函数捕获，然后根据具体组件分配给特定函数。</p>
+<p>React控制组件的生命周期，在unmount的时候能清除相关的所有事件函数，不会发生内存泄漏。</p>
+</li>
+</ul>
+<h1 id="React"><a href="#React" class="headerlink" title="React"></a>React</h1><h2 id="理念"><a href="#理念" class="headerlink" title="理念"></a>理念</h2><p>UI=render(data)</p>
+<p>这个函数是一个纯函数，即没有任何副作用，输出完全依赖于输入的函数。</p>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>DOM操作会引起浏览器对页面进行重新布局，重新绘制</p>
+<h2 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h2><p>React首先构建Virtual DOM。Virtual DOM不会触及浏览器的部分，只存在与Javascript空间的树形结构，每次自上而下渲染React组件时，会对比这次产生的和上次渲染的Virtual DOM，对比就会发现差别，然后修改真正的DOM树时就只触及差别中的部分就行。</p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>如果一个组件需要构造函数，第一行必须调用父类的构造函数，否则类实例的所有成员函数就无法通过this.props访问到父组件传递过来的props值。</p>
+<h2 id="成员函数与实例的绑定"><a href="#成员函数与实例的绑定" class="headerlink" title="成员函数与实例的绑定"></a>成员函数与实例的绑定</h2><p>ES6方法创造的React组件类不会自动绑定this到当前实例对象，所以需要在构造函数中，做显示的绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.onClickButton = <span class="keyword">this</span>.onClickButton.bind(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="propTyps检查"><a href="#propTyps检查" class="headerlink" title="propTyps检查"></a>propTyps检查</h2><p>声明自己接口规范，包含以下方面：</p>
+<ul>
+<li>支持的prop</li>
+<li>每个prop的格式（类型）</li>
+</ul>
+<p>这是一种限制，在运行时和静态代码检查时，都可以根据prop Types判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Counter.propTypes = &#123;</span><br><span class="line">  name: PropTypes.string.isRequired,</span><br><span class="line">  initValue: PropTypes.number</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PropTypes已从最新版的React库中移除，单独作为一个库，所以在使用的时候需要再单独引入</p>
+</blockquote>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="装载过程Mount"><a href="#装载过程Mount" class="headerlink" title="装载过程Mount"></a>装载过程Mount</h3><p>组件第一次在DOM树中渲染的过程</p>
+<h4 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h4><p>不是需要实现的，一般出于以下目的实现：</p>
+<ul>
+<li>初始化state</li>
+<li>绑定成员函数的this环境</li>
+</ul>
+<h4 id="getInitialState"><a href="#getInitialState" class="headerlink" title="getInitialState"></a>getInitialState</h4><p>只在用React.createClass方法创建组件类时才发生作用</p>
+<h4 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h4><p>只在用React.createClass方法创建组件类时才发生作用</p>
+<h4 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h4><p>在render前被调用。可在服务器端调用，也可在浏览器端调用</p>
+<h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><p>必须实现</p>
+<h4 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h4><p>在render后被调用，在所有组件的render都被调用完成后，才会调用。</p>
+<p>只能在浏览器端调用。在服务器端使用React的时候不会被调用</p>
+<h3 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h3><h4 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a>componentWillReceiveProps</h4><p>父组件的render函数被调用，在render函数里被渲染的子组件就会经理更新过程，不管父组件传递给子组件的props有没有改变，都会出发子组件的该方法。</p>
+<h4 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h4><p>返回true/false来决定是否需要渲染</p>
+<h4 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h4><h4 id="render-1"><a href="#render-1" class="headerlink" title="render"></a>render</h4><h4 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h4><p>无论更新过程发生在服务器端还是浏览器端都会被调用</p>
+<h3 id="卸载过程"><a href="#卸载过程" class="headerlink" title="卸载过程"></a>卸载过程</h3><h4 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h4><h3 id="state和prop的局限"><a href="#state和prop的局限" class="headerlink" title="state和prop的局限"></a>state和prop的局限</h3><p>1.当数据重复时，由于存了多分，如果出现数据不一致，将无法判断以哪个为准</p>
+<p>2.包含多层组件结构时，顶层组件想传递数据给最底层子组件时，用prop的方式，就只能通过中间的组件层中转。但也许中间层并不需要这些数据，但依然需要支持这个prop。</p>
+<h1 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h1><p>四个组成部分：</p>
+<ul>
+<li>Dispatcher，处理动作分发，维持Store之间的依赖关系</li>
+<li>Store，负责存储数据和处理数据相关逻辑</li>
+<li>Action，驱动Dispatcher的JavaScript对象</li>
+<li>View，视图部分，负责显示用户界面</li>
+</ul>
+<h2 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h2><p>一个应用只维持唯一的Dispatcher对象，从Flux中import</p>
+<h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><ul>
+<li>action.js</li>
+<li>actionType.js</li>
+</ul>
+<p>action.js，定义产生并派发action的对象函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> increment = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">  AppDispatcher.dispatch(&#123;</span><br><span class="line">    type: ActionType.INCREMENT,</span><br><span class="line">    name: name</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>actionType.js，定义action类型</p>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>存储应用状态，同时接受Dispatcher派发的动作，根据动作来决定是否更新应用状态。可以有多个Store对象。Store对象要注册到Dispatcher对象上。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>数据不再由View修改，而是在Store中。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>1.Store之间的依赖关系</p>
+<p>一个action会派发给所有回调函数，而且Store的装载顺序无法预期，从而Dispatcher调用回调函数的顺序也就无法预期。所以需要使用Dispatcher的waitFor函数。</p>
+<p>2.难以进行服务器渲染</p>
+<p>在服务器端渲染，输出不是一个DOM树，而是一个字符串（全是HTML的字符串）</p>
+<p>Dispatcher和Store都是全局唯一对象，不同请求的状态就全乱套了。</p>
+<p>3.Store混乱了逻辑和状态</p>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="基本原则"><a href="#基本原则" class="headerlink" title="基本原则"></a>基本原则</h2><ul>
+<li><p>唯一数据源</p>
+<p>应用的状态数据应该只存储在唯一的一个Store上</p>
+</li>
+<li><p>保持状态只读</p>
+</li>
+<li><p>数据改变只能通过纯函数完成</p>
+<p>reduce(state, action)</p>
+<p>根据state和action生成一个新的state对象并返回，不去修改入参</p>
+</li>
+</ul>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Provider&#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"><span class="keyword">import</span> TodoApp <span class="keyword">from</span> <span class="string">'./TodoApp'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./Store.js'</span>;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;TodoApp /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+<h3 id="Store-js"><a href="#Store-js" class="headerlink" title="Store.js"></a>Store.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore, combineReducers&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="comment">//组合多个reducer</span></span><br><span class="line"><span class="keyword">const</span> reducer = combineReducers(&#123;</span><br><span class="line">  todos: xxxReducer,</span><br><span class="line">  ffff: ffffResucer</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createStore(reducer)</span><br></pre></td></tr></table></figure>
+<h3 id="actionTypes-js"><a href="#actionTypes-js" class="headerlink" title="actionTypes.js"></a>actionTypes.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ADD_TODO = <span class="string">'TODO/ADD'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="actions-js"><a href="#actions-js" class="headerlink" title="actions.js"></a>actions.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;ADD_TODO&#125; <span class="keyword">from</span> <span class="string">'./actionTypes.js'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> addTodo = <span class="function">(<span class="params">text</span>) =&gt;</span> (&#123;</span><br><span class="line">  type: ADD_TODO,</span><br><span class="line">  text: text</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 与以下等效,省去return，直接用圆括号把返回对象包起来</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> addTodo = <span class="function">(<span class="params">text</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: ADD_TODO,</span><br><span class="line">    text: text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="reducer-js"><a href="#reducer-js" class="headerlink" title="reducer.js"></a>reducer.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;ADD_TODO,xxx&#125; <span class="keyword">from</span> <span class="string">'./actionTypes.js'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (state = [], action) =&gt; &#123;</span><br><span class="line">  <span class="keyword">switch</span>(action.type)&#123;</span><br><span class="line">      <span class="comment">//针对所有action.Type所有可能值的case语句</span></span><br><span class="line">    <span class="keyword">case</span> ADD_TODO:</span><br><span class="line">      <span class="keyword">return</span> [</span><br><span class="line">        &#123;</span><br><span class="line">          id:sss,</span><br><span class="line">          eee: ddd,</span><br><span class="line">        &#125;,</span><br><span class="line">        ...state</span><br><span class="line">      ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="componet-js"><a href="#componet-js" class="headerlink" title="componet.js"></a>componet.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selectVisibleTodos = <span class="function">(<span class="params">todos, filter</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">switch</span> (filter) &#123;</span><br><span class="line">    <span class="keyword">case</span> FilterTypes.ALL:</span><br><span class="line">      <span class="keyword">return</span> todos;</span><br><span class="line">    <span class="keyword">case</span> FilterTypes.COMPLETED:</span><br><span class="line">      <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.completed);</span><br><span class="line">    <span class="keyword">case</span> FilterTypes.UNCOMPLETED:</span><br><span class="line">      <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">item</span> =&gt;</span> !item.completed);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'unsupported filter'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将Store上的状态转换为该组件的prop</span></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    todos: selectVisibleTodos(state.todos, state.filter)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将该组件的动作转换为派送给Store的动作，即把该组件暴露出来的函数类型的prop关联上dispatch函数的调用</span></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    onToggleTodo: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(toggleTodo(id)); <span class="comment">//关联dispatch和action.js中定义的方法</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onRemoveTodo: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">      dispatch(removeTodo(id));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps, mapDispatchToProps)(TodoList);</span><br></pre></td></tr></table></figure>
+<h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><h2 id="Chrome扩展包"><a href="#Chrome扩展包" class="headerlink" title="Chrome扩展包"></a>Chrome扩展包</h2><ul>
+<li>React Devtools，可以检视React组件的树形结构</li>
+<li>Redux Devtools，可以检视Redux数据流，可以将Store状态跳跃到任何一个历史状态</li>
+<li>React Pref，可以发现React组件的渲染性能</li>
+</ul>
+<h2 id="redux-immutable-state-invariant辅助包"><a href="#redux-immutable-state-invariant辅助包" class="headerlink" title="redux-immutable-state-invariant辅助包"></a>redux-immutable-state-invariant辅助包</h2><h2 id="工具使用方法"><a href="#工具使用方法" class="headerlink" title="工具使用方法"></a>工具使用方法</h2><p>store.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore,combineReducers, applyMiddware, compose&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> Pref <span class="keyword">from</span> <span class="string">'react-addons-pref'</span>;</span><br><span class="line"><span class="keyword">const</span> win = <span class="built_in">window</span>;</span><br><span class="line">win,Pref = Pref;</span><br><span class="line"><span class="comment">//将window赋值给模块级别变量win，是为了帮助代码缩小器(minifer)，在webpack中缩小代码的插件叫做UglifyJsPlugin，能够将局部变量名改成很短的变量名，且功能不受影响</span></span><br></pre></td></tr></table></figure>
+<h1 id="代码文件组织"><a href="#代码文件组织" class="headerlink" title="代码文件组织"></a>代码文件组织</h1><h2 id="按功能组织"><a href="#按功能组织" class="headerlink" title="按功能组织"></a>按功能组织</h2><ul>
+<li>功能<ul>
+<li>actions.js</li>
+<li>actionTypes.js</li>
+<li>index.js</li>
+<li>reducer.js</li>
+<li>views<ul>
+<li>component.js</li>
+<li>container.js</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="export"><a href="#export" class="headerlink" title="export"></a>export</h2><p>在index.js中导出本模块公开的接口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actions <span class="keyword">from</span> <span class="string">'./actions.js'</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">'./reducer.js'</span>;</span><br><span class="line"><span class="keyword">import</span> view <span class="keyword">from</span> <span class="string">'./views/container.js'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;actions,reducer,view&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;actions,reducer,view <span class="keyword">as</span> 功能&#125; <span class="keyword">from</span> <span class="string">'../功能'</span></span><br></pre></td></tr></table></figure>
+<h1 id="状态树设计原则"><a href="#状态树设计原则" class="headerlink" title="状态树设计原则"></a>状态树设计原则</h1><ul>
+<li>一个模块控制一个状态节点</li>
+<li>避免冗余数据</li>
+<li>树形结构扁平</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/Flux/" rel="tag"># Flux</a>
+          
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/04/docker/基于Docker的ETCD集群/" rel="next" title="基于Docker的ETCD集群">
+                <i class="fa fa-chevron-left"></i> 基于Docker的ETCD集群
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/06/k8s/基于Docker的TLS-ETCD集群/" rel="prev" title="基于Docker的TLS ETCD集群">
+                基于Docker的TLS ETCD集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Kris Jyo">
+          <p class="site-author-name" itemprop="name">Kris Jyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX"><span class="nav-number">1.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React"><span class="nav-number">2.</span> <span class="nav-text">React</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#理念"><span class="nav-number">2.1.</span> <span class="nav-text">理念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">2.2.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">2.3.</span> <span class="nav-text">Virtual DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">2.4.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员函数与实例的绑定"><span class="nav-number">2.5.</span> <span class="nav-text">成员函数与实例的绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#propTyps检查"><span class="nav-number">2.6.</span> <span class="nav-text">propTyps检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期"><span class="nav-number">2.7.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#装载过程Mount"><span class="nav-number">2.7.1.</span> <span class="nav-text">装载过程Mount</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#constructor-NaN"><span class="nav-number">2.7.1.1.</span> <span class="nav-text">constructor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getInitialState"><span class="nav-number">2.7.1.2.</span> <span class="nav-text">getInitialState</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getDefaultProps"><span class="nav-number">2.7.1.3.</span> <span class="nav-text">getDefaultProps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#componentWillMount"><span class="nav-number">2.7.1.4.</span> <span class="nav-text">componentWillMount</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#render"><span class="nav-number">2.7.1.5.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#componentDidMount"><span class="nav-number">2.7.1.6.</span> <span class="nav-text">componentDidMount</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新过程"><span class="nav-number">2.7.2.</span> <span class="nav-text">更新过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#componentWillReceiveProps"><span class="nav-number">2.7.2.1.</span> <span class="nav-text">componentWillReceiveProps</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shouldComponentUpdate"><span class="nav-number">2.7.2.2.</span> <span class="nav-text">shouldComponentUpdate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#componentWillUpdate"><span class="nav-number">2.7.2.3.</span> <span class="nav-text">componentWillUpdate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#render-1"><span class="nav-number">2.7.2.4.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">2.7.2.5.</span> <span class="nav-text">componentDidUpdate</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载过程"><span class="nav-number">2.7.3.</span> <span class="nav-text">卸载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#componentWillUnmount"><span class="nav-number">2.7.3.1.</span> <span class="nav-text">componentWillUnmount</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#state和prop的局限"><span class="nav-number">2.7.4.</span> <span class="nav-text">state和prop的局限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flux"><span class="nav-number">3.</span> <span class="nav-text">Flux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatcher"><span class="nav-number">3.1.</span> <span class="nav-text">Dispatcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Action"><span class="nav-number">3.2.</span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Store"><span class="nav-number">3.3.</span> <span class="nav-text">Store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">3.4.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">3.5.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">4.</span> <span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原则"><span class="nav-number">4.1.</span> <span class="nav-text">基本原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">4.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#index-js"><span class="nav-number">4.2.1.</span> <span class="nav-text">index.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Store-js"><span class="nav-number">4.2.2.</span> <span class="nav-text">Store.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#actionTypes-js"><span class="nav-number">4.2.3.</span> <span class="nav-text">actionTypes.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#actions-js"><span class="nav-number">4.2.4.</span> <span class="nav-text">actions.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducer-js"><span class="nav-number">4.2.5.</span> <span class="nav-text">reducer.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componet-js"><span class="nav-number">4.2.6.</span> <span class="nav-text">componet.js</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发工具"><span class="nav-number">5.</span> <span class="nav-text">开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome扩展包"><span class="nav-number">5.1.</span> <span class="nav-text">Chrome扩展包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-immutable-state-invariant辅助包"><span class="nav-number">5.2.</span> <span class="nav-text">redux-immutable-state-invariant辅助包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具使用方法"><span class="nav-number">5.3.</span> <span class="nav-text">工具使用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码文件组织"><span class="nav-number">6.</span> <span class="nav-text">代码文件组织</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#按功能组织"><span class="nav-number">6.1.</span> <span class="nav-text">按功能组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export"><span class="nav-number">6.2.</span> <span class="nav-text">export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">6.3.</span> <span class="nav-text">import</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态树设计原则"><span class="nav-number">7.</span> <span class="nav-text">状态树设计原则</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kris Jyo</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
