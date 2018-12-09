@@ -378,7 +378,7 @@
       
 
       
-        <h1 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h1><h2 id="govendor"><a href="#govendor" class="headerlink" title="govendor"></a><a href="https://github.com/kardianos/govendor" target="_blank" rel="noopener">govendor</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 初始化配置文件</span></span><br><span class="line">govendor init</span><br><span class="line"><span class="meta">#</span><span class="bash"> 引入依赖包</span></span><br><span class="line">govendor add +external</span><br></pre></td></tr></table></figure>
+        <h1 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h1><h2 id="govendor"><a href="#govendor" class="headerlink" title="govendor"></a><a href="https://github.com/kardianos/govendor" target="_blank" rel="noopener">govendor</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 初始化配置文件</span><br><span class="line">govendor init</span><br><span class="line"><span class="meta">#</span> 引入依赖包</span><br><span class="line">govendor add +external</span><br></pre></td></tr></table></figure>
 <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="go-redis"><a href="#go-redis" class="headerlink" title="go-redis"></a><a href="https://github.com/go-redis/redis" target="_blank" rel="noopener">go-redis</a></h2><h3 id="初始化Client"><a href="#初始化Client" class="headerlink" title="初始化Client"></a>初始化Client</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redisClient := redis.NewClient(&amp;redis.Options&#123;</span><br><span class="line">		Addr:     config.Redis.Host,</span><br><span class="line">		Password: config.Redis.Pwd, <span class="comment">// no password set</span></span><br><span class="line">		DB:       <span class="number">0</span>,                <span class="comment">// use default DB</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redisClient.Ping().Result()</span><br></pre></td></tr></table></figure>
 <h3 id="存入数据"><a href="#存入数据" class="headerlink" title="存入数据"></a>存入数据</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redisClient.SetNX(key, value, TokenTime).Err()</span><br></pre></td></tr></table></figure>
@@ -513,7 +513,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
